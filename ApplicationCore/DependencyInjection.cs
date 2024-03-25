@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Behaviours;
+using ApplicationCore.Data;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ApplicationCore;
@@ -14,6 +15,8 @@ public static class DependencyInjection
             config.RegisterServicesFromAssembly(assembly);
             config.AddOpenBehavior(typeof(UnitOfWorkBehaviour<,>));
         });
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
     }

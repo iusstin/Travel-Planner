@@ -4,6 +4,9 @@ using Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using ApplicationCore;
+using Travel_Planner.API.Services;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +18,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.AddIdentityCore<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
 builder.Services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
 
+builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+builder.Services.AddScoped<AuthService>();
 builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(AutoMapperProfile)));
 
 builder.Services.AddControllers();
@@ -24,7 +30,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
-    //.AddApplicationCore()
+    .AddApplicationCore()
     .AddInfrastructure();
 
 var app = builder.Build();
@@ -39,6 +45,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 
