@@ -4,6 +4,7 @@ using AutoMapper;
 using Domain.Entities;
 using Domain.Interfaces;
 using Domain.Models;
+using FluentValidation;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
@@ -15,13 +16,20 @@ public class AuthService
     private readonly IMapper _mapper;
     private readonly UserManager<User> _userManager;
     private readonly IJwtUtils _jwtUtils;
+    private readonly IValidator<RegisterCmd> _validator;
 
-    public AuthService(IMediator mediator, UserManager<User> userManager, IJwtUtils jwtUtils, IMapper mapper)
+    public AuthService(
+        IMediator mediator, 
+        UserManager<User> userManager, 
+        IJwtUtils jwtUtils, 
+        IMapper mapper, 
+        IValidator<RegisterCmd> validator)
     {
         _mediator = mediator;
         _userManager = userManager;
         _jwtUtils = jwtUtils;
         _mapper = mapper;
+        _validator = validator;
     }
 
     public async Task RegisterUser(RegisterRequestModel model, CancellationToken cancellationToken)
@@ -32,6 +40,9 @@ public class AuthService
             model = user,
             Password = model.Password,
         };
+        var validation = await _validator.ValidateAsync(cmd, cancellationToken);
+        if (!validation.IsValid)
+            throw new Exception(validation.ToString());
 
         await _mediator.Send(cmd);
     }
