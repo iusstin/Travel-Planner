@@ -47,14 +47,14 @@ public class AuthService
         await _mediator.Send(cmd);
     }
 
-    public async Task<UserModel> LoginWithPassword(LoginRequestModel model, CancellationToken cancellationToken)
+    public async Task<UserModel> LoginWithPassword(LoginRequestModel model)
     {
         var user = await _mediator.Send(new GetUserByEmailCmd { Email = model.Email });
         if (user is null || !await _userManager.CheckPasswordAsync(user, model.Password))
             throw new ArgumentException("Invalid email or password");
 
         string token = _jwtUtils.GenerateToken(user);
-        var userModel = new UserModel(long.Parse(user.Id), user.UserName, user.Email, token);
+        var userModel = new UserModel(user.Id, user.UserName, user.Email, token);
         return userModel;
     }
 }

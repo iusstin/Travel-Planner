@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.Behaviours;
 using ApplicationCore.Data;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ApplicationCore;
@@ -14,9 +15,11 @@ public static class DependencyInjection
         {
             config.RegisterServicesFromAssembly(assembly);
             config.AddOpenBehavior(typeof(UnitOfWorkBehaviour<,>));
+            config.AddOpenBehavior(typeof(ValidationPipelineBehaviour<,>));
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddValidatorsFromAssembly(assembly);
 
         return services;
     }

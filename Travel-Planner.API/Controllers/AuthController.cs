@@ -42,7 +42,7 @@ namespace Travel_Planner.API.Controllers
         {
             try
             {
-                var response = await _authService.LoginWithPassword(model, cancellationToken);
+                var response = await _authService.LoginWithPassword(model);
                 return Ok(response);
             }
             catch (Exception e)

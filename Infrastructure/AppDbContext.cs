@@ -30,4 +30,5 @@ public class AppDbContext: IdentityDbContext<User>, IAppDbContext
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Place> Places { get; set; }
 }
