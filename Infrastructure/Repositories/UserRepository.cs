@@ -20,9 +20,10 @@ public class UserRepository : IUserRepository
         await _context.Users.AddAsync(user, cancellationToken);
     }
 
-    public Task<IEnumerable<User>> GetAllUsers()
+    public async Task<IEnumerable<User>> GetAllUsers(CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var users = QueryUsers();
+        return await users.ToListAsync(cancellationToken);
     }
 
     public Task<User?> GetById(string id)

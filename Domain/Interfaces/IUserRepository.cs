@@ -7,7 +7,7 @@ namespace Domain.Interfaces;
 public interface IUserRepository
 {
     Task<User?> GetById(string id);
-    Task<IEnumerable<User>> GetAllUsers();
+    Task<IEnumerable<User>> GetAllUsers(CancellationToken cancellationToken);
     Task<IEnumerable<User>> GetByExpressionAsync(
         Expression<Func<User, bool>>? filter,
         Func<IQueryable<User>, IIncludableQueryable<User, object>>? include = null,

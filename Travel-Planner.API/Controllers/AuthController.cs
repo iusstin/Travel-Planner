@@ -45,7 +45,7 @@ namespace Travel_Planner.API.Controllers
                 var response = await _authService.LoginWithPassword(model);
                 return Ok(response);
             }
-            catch (Exception e)
+            catch (ArgumentException e)
             {
                 return Forbid(e.Message);
             }
