@@ -17,7 +17,7 @@ public sealed class UnitOfWorkBehaviour<TRequest, TResponse>
         RequestHandlerDelegate<TResponse> next,
         CancellationToken cancellationToken)
     {
-        if (typeof(TRequest).Name.EndsWith("Cmd"))
+        if (!typeof(TRequest).Name.EndsWith("Cmd"))
             return await next();
 
         var response = await next();

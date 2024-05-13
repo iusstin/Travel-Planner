@@ -2,6 +2,7 @@
 using ApplicationCore.User.Queries.GetUser;
 using AutoMapper;
 using Domain.Entities;
+using Domain.Exceptions;
 using Domain.Interfaces;
 using Domain.Models;
 using FluentValidation;
@@ -42,7 +43,7 @@ public class AuthService
         };
         var validation = await _validator.ValidateAsync(cmd, cancellationToken);
         if (!validation.IsValid)
-            throw new Exception(validation.ToString());
+            throw new BadRequestException(validation.ToString());
 
         await _mediator.Send(cmd);
     }
@@ -51,7 +52,7 @@ public class AuthService
     {
         var user = await _mediator.Send(new GetUserByEmailCmd { Email = model.Email });
         if (user is null || !await _userManager.CheckPasswordAsync(user, model.Password))
-            throw new ArgumentException("Invalid email or password");
+            throw new UnauthorizedAccessException("Invalid email or password");
 
         string token = _jwtUtils.GenerateToken(user);
         var userModel = new UserModel(user.Id, user.UserName, user.Email, token);
