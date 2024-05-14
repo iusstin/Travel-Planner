@@ -23,6 +23,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(AutoMapperProfile)));
+builder.Services.AddSingleton<GlobalExceptionMiddleware>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -45,6 +46,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.UseMiddleware<JwtMiddleware>();
 
