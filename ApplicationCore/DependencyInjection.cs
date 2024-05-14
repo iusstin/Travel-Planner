@@ -16,6 +16,7 @@ public static class DependencyInjection
             config.RegisterServicesFromAssembly(assembly);
             config.AddOpenBehavior(typeof(UnitOfWorkBehaviour<,>));
             config.AddOpenBehavior(typeof(ValidationPipelineBehaviour<,>));
+            config.AddOpenBehavior(typeof(LoggingBehaviour<,>));
         });
 
         services.AddScoped<IUnitOfWork, UnitOfWork>();
