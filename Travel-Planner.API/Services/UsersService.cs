@@ -17,7 +17,7 @@ public class UsersService
 
     public async Task<IEnumerable<Domain.Entities.User>> GetAllUsersAsync(CancellationToken cancellationToken)
     {
-        var users = await _mediator.Send(new GetUsersQuery());
+        var users = await _mediator.Send(new GetUsersQuery(), cancellationToken);
         return users ?? Enumerable.Empty<Domain.Entities.User>();
     }
 }

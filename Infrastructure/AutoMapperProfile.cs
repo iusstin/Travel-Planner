@@ -11,5 +11,7 @@ public class AutoMapperProfile : Profile
         CreateMap<User, UserModel>().ReverseMap();
         CreateMap<User, LoginRequestModel>().ReverseMap();
         CreateMap<RegisterRequestModel, User>().ReverseMap();
+
+        CreateMap<CreatePlaceModel, Place>().ReverseMap();
     }
 }

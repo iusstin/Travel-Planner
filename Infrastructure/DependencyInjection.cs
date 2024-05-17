@@ -10,6 +10,7 @@ public static class DependencyInjection
     {
         services.AddScoped<IJwtUtils, JwtUtils>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IPlaceRepository, PlaceRepository>();
         return services;
     }
 }

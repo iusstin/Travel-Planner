@@ -26,9 +26,10 @@ public class UserRepository : IUserRepository
         return await users.ToListAsync(cancellationToken);
     }
 
-    public Task<User?> GetById(string id)
+    public async Task<User?> GetById(string id)
     {
-        throw new NotImplementedException();
+        var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+        return user;
     }
 
     public async Task<IEnumerable<User>> GetByExpressionAsync(

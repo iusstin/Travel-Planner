@@ -38,6 +38,7 @@ public class GlobalExceptionMiddleware : IMiddleware
             UnauthorizedAccessException => HttpStatusCode.Forbidden,
             BadRequestException => HttpStatusCode.BadRequest,
             ValidationException => HttpStatusCode.BadRequest,
+            DuplicateEntityException => HttpStatusCode.BadRequest,
             _ => HttpStatusCode.InternalServerError,
         };
 
