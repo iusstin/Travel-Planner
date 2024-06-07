@@ -12,16 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup .NET
+      - name: Setup .NET Core
         uses: actions/setup-dotnet@v3
         with:
          dotnet-version: '8.0.x'
 
       - name: Restore
-        run: dotnet restore ./Travel-Planner.API.sln
+        run: dotnet restore ./Travel-Planner.API/Travel-Planner.API.csproj
 
       - name: Build
-        run: dotnet build ./Travel-Planner.API.sln --configuration Release --no-restore
+        run: dotnet build ./Travel-Planner.API/Travel-Planner.API.csproj --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./Travel-Planner.API.sln --configuration Release --no-build
+        run: dotnet publish ./Travel-Planner.API/Travel-Planner.API.csproj --configuration Release --no-build
