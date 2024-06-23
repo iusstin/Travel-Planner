@@ -32,7 +32,7 @@ namespace Travel_Planner.API.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserModel>> AuthenticateWithPassword([FromBody] LoginRequestModel model, CancellationToken cancellationToken)
         {
-            var response = await _authService.LoginWithPassword(model);
+            var response = await _authService.LoginWithPassword(model, cancellationToken);
             return Ok(response);
         }
     }

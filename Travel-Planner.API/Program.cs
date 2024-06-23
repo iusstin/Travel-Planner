@@ -10,8 +10,20 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var CorsAllowedOrigins = "_CORSAllowedOrigins";
 
+// Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: CorsAllowedOrigins, builder =>
+    {
+        builder
+            .WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 var connection = builder.Configuration.GetConnectionString("AppDbContext");
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(connection, builder => builder.EnableRetryOnFailure()));
@@ -50,6 +62,8 @@ app.UseAuthorization();
 app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.UseMiddleware<JwtMiddleware>();
+
+app.UseCors(CorsAllowedOrigins);
 
 app.MapControllers();
 

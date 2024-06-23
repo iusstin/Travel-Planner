@@ -14,7 +14,7 @@ public class GetUserByEmailCmdHandler : BaseCommandHandler<GetUserByEmailCmd, Do
     }
     public override async Task<Domain.Entities.User?> Handle(GetUserByEmailCmd request, CancellationToken cancellationToken)
     {
-        var result  = await _userRepository.GetByExpressionAsync(u => u.Email == request.Email).ConfigureAwait(false);
+        var result  = await _userRepository.GetByExpressionAsync(u => u.Email == request.Email, cancellationToken: cancellationToken).ConfigureAwait(false);
         return result.FirstOrDefault();
     }
 }

@@ -45,12 +45,12 @@ public class AuthService
         if (!validation.IsValid)
             throw new BadRequestException(validation.ToString());
 
-        await _mediator.Send(cmd);
+        await _mediator.Send(cmd, cancellationToken);
     }
 
-    public async Task<UserModel> LoginWithPassword(LoginRequestModel model)
+    public async Task<UserModel> LoginWithPassword(LoginRequestModel model, CancellationToken cancellationToken)
     {
-        var user = await _mediator.Send(new GetUserByEmailCmd { Email = model.Email });
+        var user = await _mediator.Send(new GetUserByEmailCmd { Email = model.Email }, cancellationToken);
         if (user is null || !await _userManager.CheckPasswordAsync(user, model.Password))
             throw new UnauthorizedAccessException("Invalid email or password");
 

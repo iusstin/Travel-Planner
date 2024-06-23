@@ -2,6 +2,7 @@
 using Domain.Exceptions;
 using FluentValidation;
 using MediatR;
+using ValidationException = Domain.Exceptions.ValidationException;
 
 namespace ApplicationCore.Behaviours;
 
@@ -25,7 +26,7 @@ public class ValidationPipelineBehaviour<TRequest, TResponse>
         }
 
         var validationFailures = await Task.WhenAll(
-            _validators.Select(validator => validator.ValidateAsync(context)));
+            _validators.Select(validator => validator.ValidateAsync(context, cancellationToken)));
 
         var errors = validationFailures
             .Where(validationResult => !validationResult.IsValid)
@@ -37,7 +38,7 @@ public class ValidationPipelineBehaviour<TRequest, TResponse>
 
         if (errors.Any())
         {
-            throw new Domain.Exceptions.ValidationException(errors);
+            throw new ValidationException(errors);
         }
 
         return await next();
