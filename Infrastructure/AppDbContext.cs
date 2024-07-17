@@ -16,7 +16,7 @@ public class AppDbContext: IdentityDbContext<User>, IAppDbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder builder)
     {
-        builder.UseSqlServer(_config.GetConnectionString("AppDbContext"));
+        builder.UseSqlServer(_config.GetConnectionString("AppDbContextAzure"));
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
@@ -31,4 +31,5 @@ public class AppDbContext: IdentityDbContext<User>, IAppDbContext
 
     public DbSet<User> Users { get; set; }
     public DbSet<Place> Places { get; set; }
+    public DbSet<Location> Locations { get; set; }
 }
