@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Interfaces;
+using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ public class AppDbContext: IdentityDbContext<User>, IAppDbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
+        new TripMatesConfiguration().Configure(builder.Entity<TripMate>());
     }
 
     public async Task<int> SaveChangesAsync()
@@ -33,4 +35,5 @@ public class AppDbContext: IdentityDbContext<User>, IAppDbContext
     public DbSet<Place> Places { get; set; }
     public DbSet<Location> Locations { get; set; }
     public DbSet<Trip> Trips { get; set; }
+    public DbSet<TripMate> TripMates { get; set; }
 }

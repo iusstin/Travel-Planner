@@ -9,5 +9,6 @@ public interface IAppDbContext
     public DbSet<Place> Places { get; set; }
     public DbSet<Location> Locations { get; set; }
     public DbSet<Trip> Trips { get; set; }
+    public DbSet<TripMate> TripMates { get; set; }
     public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
