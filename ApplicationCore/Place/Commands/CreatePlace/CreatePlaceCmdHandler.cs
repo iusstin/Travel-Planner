@@ -1,8 +1,11 @@
 ﻿using ApplicationCore.BaseClasses;
+using ApplicationCore.Location.Commands;
+using ApplicationCore.Location.Queries;
 using ApplicationCore.Place.Queries.GetPlaceByNameOrAddress;
 using Domain;
 using Domain.Exceptions;
 using Domain.Interfaces;
+using Domain.Models;
 using MediatR;
 
 namespace ApplicationCore.Place.Commands.CreatePlace;
@@ -27,17 +30,36 @@ public class CreatePlaceCmdHandler : BaseCommandHandler<CreatePlaceCmd, Domain.E
         if (existingPlace.Any())
             throw new DuplicateEntityException("Entity exists");
 
+        var location = await Mediator.Send(new GetLocationQuery
+        {
+            Id = cmd.model.LocationId,
+            Address = cmd.model.Address,
+            Latitude = cmd.model.Latitude,
+            Longitude = cmd.model.Longitude,
+        });
+
+        if (location is null)
+        {
+            location = await Mediator.Send(new AddLocationCmd
+            {
+                Model = new CreateLocationModel(
+                    cmd.model.Address,
+                    cmd.model.Latitude,
+                    cmd.model.Longitude,
+                    cmd.model.City,
+                    cmd.model.Region,
+                    cmd.model.PostalCode,
+                    cmd.model.Country)
+            });
+        }
+
         var newPlace = new Domain.Entities.Place
         {
             CreatedBy = "iustin",
             ModifiedBy = "iustin",
             Name = cmd.model.Name,
             Description = cmd.model.Description,
-            Address = cmd.model.Address,
-            City = cmd.model.City,
-            Country = cmd.model.Country,
-            Latitude = cmd.model.Latitude,
-            Longitude = cmd.model.Longitude,
+            LocationId = location.Id,
             Link = cmd.model.Link,
             PhoneNumber = cmd.model.PhoneNumber,
             Image = cmd.model.Image,

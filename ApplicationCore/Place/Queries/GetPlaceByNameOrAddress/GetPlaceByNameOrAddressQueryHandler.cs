@@ -18,7 +18,7 @@ public class GetPlaceByNameOrAddressQueryHandler
     public override async Task<IEnumerable<Domain.Entities.Place>> Handle(GetPlaceByNameOrAddressQuery cmd, CancellationToken cancellationToken)
     {
         var places = await _placeRepository.GetByExpression(
-            filter: p => p.Name == cmd.Name || p.Address == cmd.Address, 
+            filter: p => p.Name == cmd.Name || p.Location.Address == cmd.Address, 
             cancellationToken: cancellationToken);
 
         return places ?? Enumerable.Empty<Domain.Entities.Place>();
