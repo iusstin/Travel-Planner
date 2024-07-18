@@ -24,6 +24,7 @@ public class AppDbContext: IdentityDbContext<User>, IAppDbContext
     {
         base.OnModelCreating(builder);
         new TripMatesConfiguration().Configure(builder.Entity<TripMate>());
+        new TripPlaceConfiuration().Configure(builder.Entity<TripPlace>());
     }
 
     public async Task<int> SaveChangesAsync()
@@ -36,4 +37,5 @@ public class AppDbContext: IdentityDbContext<User>, IAppDbContext
     public DbSet<Location> Locations { get; set; }
     public DbSet<Trip> Trips { get; set; }
     public DbSet<TripMate> TripMates { get; set; }
+    public DbSet<TripPlace> TripPlaces { get; set; }
 }

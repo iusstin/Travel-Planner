@@ -9,7 +9,7 @@ public class Trip : BaseEntity
     public Trip()
     {
         Mates = new HashSet<TripMate>();
-        //TripPlaces = new HashSet<Place>();
+        TripPlaces = new HashSet<TripPlace>();
     }
 
     [Key]
@@ -28,5 +28,5 @@ public class Trip : BaseEntity
     public string? Description { get; set; }
     public string? Image { get; set; }
     public ICollection<TripMate> Mates { get; set; } = default!;
-    //public ICollection<Place> TripPlaces { get; set; } = default!;
+    public ICollection<TripPlace> TripPlaces { get; set; } = default!;
 }

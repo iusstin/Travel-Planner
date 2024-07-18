@@ -6,8 +6,10 @@ public class User : IdentityUser
 {
     public User()
     {
-        Trips = new HashSet<Trip>();
+        OwnTrips = new HashSet<Trip>();
+        TripMates = new HashSet<TripMate>();    
     }
 
-    public ICollection<Trip> Trips { get; set; }
+    public ICollection<Trip> OwnTrips { get; set; }
+    public ICollection<TripMate> TripMates { get; set; }
 }
