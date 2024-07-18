@@ -24,7 +24,7 @@ builder.Services.AddCors(options =>
             .AllowCredentials();
     });
 });
-var connection = builder.Configuration.GetConnectionString("AppDbContext");
+var connection = builder.Configuration.GetConnectionString("AppDbContextAzure");
 builder.Services.AddDbContext<AppDbContext>(options => 
     options.UseSqlServer(connection, builder => builder.EnableRetryOnFailure()));
 builder.Services.AddIdentityCore<User>().AddRoles<IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
@@ -34,8 +34,6 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddScoped<AuthService>();
-builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(AutoMapperProfile)));
-builder.Services.AddSingleton<GlobalExceptionMiddleware>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
