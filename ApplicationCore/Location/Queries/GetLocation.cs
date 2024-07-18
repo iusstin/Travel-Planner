@@ -14,9 +14,9 @@ public class GetLocationQuery : BaseQuery<Domain.Entities.Location?>
 
 public class GetLocationQueryHandler : BaseQueryHandler<GetLocationQuery, Domain.Entities.Location?>
 {
-    private readonly ILocationRepo _locationRepo;
+    private readonly ILocationRepository _locationRepo;
 
-    public GetLocationQueryHandler(IMediator mediator, ILocationRepo locationRepo)
+    public GetLocationQueryHandler(IMediator mediator, ILocationRepository locationRepo)
         : base(mediator)
     {
         _locationRepo = locationRepo;

@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace Domain.Interfaces;
 
-public interface ILocationRepo
+public interface ILocationRepository
 {
     Task<Location?> GetById(long id);
     Task<IEnumerable<Location>> GetByExpressionAsync(

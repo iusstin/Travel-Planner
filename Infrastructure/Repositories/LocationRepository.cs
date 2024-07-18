@@ -6,11 +6,11 @@ using System.Linq.Expressions;
 
 namespace Infrastructure.Repositories;
 
-public class LocationRepo : ILocationRepo
+public class LocationRepository : ILocationRepository
 {
     private readonly IAppDbContext _context;
 
-    public LocationRepo(IAppDbContext context) => _context = context;
+    public LocationRepository(IAppDbContext context) => _context = context;
 
     public async Task Add(Location location, CancellationToken cancellationToken)
     {

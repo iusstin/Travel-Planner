@@ -11,7 +11,8 @@ public static class DependencyInjection
         services.AddScoped<IJwtUtils, JwtUtils>();
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IPlaceRepository, PlaceRepository>();
-        services.AddScoped<ILocationRepo, LocationRepo>();
+        services.AddScoped<ILocationRepository, LocationRepository>();
+        services.AddScoped<ITripRepository, TripRepository>();
         return services;
     }
 }

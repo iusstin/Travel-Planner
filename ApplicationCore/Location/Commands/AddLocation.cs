@@ -15,9 +15,9 @@ public class AddLocationCmd : BaseCommand<Domain.Entities.Location>
 
 public class AddLocationCmdHandler : BaseCommandHandler<AddLocationCmd, Domain.Entities.Location>
 {
-    private readonly ILocationRepo _locationRepo;
+    private readonly ILocationRepository _locationRepo;
 
-    public AddLocationCmdHandler(IMediator mediator, ILocationRepo locationRepo) : base(mediator)
+    public AddLocationCmdHandler(IMediator mediator, ILocationRepository locationRepo) : base(mediator)
     {
         _locationRepo = locationRepo;
     }
