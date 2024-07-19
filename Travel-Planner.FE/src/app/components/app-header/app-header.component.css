@@ -1,0 +1,53 @@
+header {    
+    background-color: #bbdef0;
+}
+.header-container {
+    width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+}
+.header-left {
+    align-items: center;
+    width: 230px;
+    color: white;
+}
+.header-right {
+    width: 400px;
+}
+.header-center {
+    width: calc(100% - 630px);
+}
+.logo {
+    color: black;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.home-btn {
+    background-color: #fbc02d;
+    margin-top: 8px;
+}
+.trips-btn {
+    background-color: #fbc02d;
+    margin-left: 5px;
+    margin-bottom: 10px;
+}
+.user-icon {
+    border-radius: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: #fbc02d; 
+    /* #efca08; */
+    text-align: center;
+}
+.user-id {
+    width: 30px;
+    height: 30px;
+    color: black;
+    font-weight: bolder;
+    font-size: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}

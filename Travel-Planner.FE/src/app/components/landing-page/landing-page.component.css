@@ -1,0 +1,42 @@
+.page {
+    background-image: url(/assets/background.jpg);
+    background-size: cover;
+    height: 100vh;
+    /* display: flex;
+    flex: 1; */
+}
+.title {
+    font-family: 'Sofia';
+    font-style: oblique;
+    font-weight: 400;
+    font-size: 60px;
+    color: #bbdef0;
+    width: 500px;
+    height: 130px;
+    margin: 0px auto;
+    padding-top: 50px;
+}
+.spacer {
+    width: 100%;
+    height: calc(100% - 350px);
+}
+h3 {
+    font-family: 'Sofia';
+    font-style: oblique;
+    font-size: 40px;
+    color: #bbdef0;
+    width: 620px;
+    margin: 20px auto;
+}
+.connection {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    width: 170px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+}
+button {
+    margin: 0px 5px;
+}

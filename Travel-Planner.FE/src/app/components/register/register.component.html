@@ -1,0 +1,30 @@
+<section class="dialog">
+    <h1 mat-dialog-title>Log in to your account</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="registerForm">
+        <mat-form-field class="full-width">
+          <mat-label>Username</mat-label>
+          <input matInput type="username" formControlName="username" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Email</mat-label>
+          <div class="email-icn display-style" matSuffix><mat-icon>account_circle</mat-icon></div>
+          <input matInput type="email" formControlName="email" required>
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" required>
+        </mat-form-field>
+      </form>
+    </div>
+    <div mat-dialog-actions>
+      <button mat-button [mat-dialog-close]="true" (click)="signUp()">Sign up</button>
+    </div>
+    
+    <div>
+      <p>Already have an account ?
+        <button  mat-button [mat-dialog-close]="true" (click)="onLoginClick()">Log in</button>
+      </p>
+    </div>
+  </section>
+  

@@ -10,10 +10,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TripComponent } from './components/trip/trip.component';
 import { MaterialModule } from './material.module';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
+    LandingPageComponent,
     HomeComponent,
     PlaceComponent,
     LoginComponent,
@@ -23,7 +26,9 @@ import { MaterialModule } from './material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     provideAnimationsAsync('noop')
