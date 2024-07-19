@@ -12,11 +12,14 @@ import { TripComponent } from './components/trip/trip.component';
 import { MaterialModule } from './material.module';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppHeaderComponent } from './components/app-header/app-header.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingPageComponent,
+    AppHeaderComponent,
     HomeComponent,
     PlaceComponent,
     LoginComponent,
@@ -26,6 +29,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,

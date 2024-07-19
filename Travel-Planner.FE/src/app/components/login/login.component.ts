@@ -20,7 +20,6 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required])
   });
 
-
   constructor(
     public dialog: MatDialog,
     public dialogRef: MatDialogRef<LoginComponent>,
@@ -37,7 +36,6 @@ export class LoginComponent {
   }
 
   login(): void {
-    debugger
     let loginData : Login = {
       email: this.email?.value,
       password: this.password?.value
@@ -50,7 +48,7 @@ export class LoginComponent {
           console.log(user);
           this.authService.setConnectedUser(user);
           this.authService.setToken(user.token);
-          this.router.navigate(['/home']);
+          this.router.navigate(['/']);
         },
         error: (err: Error) => {
           this.showError(err);

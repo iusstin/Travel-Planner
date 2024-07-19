@@ -2,5 +2,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-* {outline: 1px solid red;
-    outline-offset: -1px;}
+/* * {outline: 1px solid red;
+    outline-offset: -1px;} */
+    
+/* @use 'src/my-theme.scss' as custom-theme;
+@include mat.all-component-themes(custom-theme.$light-theme);
+@include mat.all-component-themes(custom-theme.$dark-theme); */

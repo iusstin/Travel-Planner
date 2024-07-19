@@ -1,7 +1,9 @@
-<header style="font-family: Mooli, sans-serif;;">
-  <h1>un header</h1>
-</header>
-<main style="font-family: Mooli, sans-serif;">
-  <h1>titlu</h1>
-  <router-outlet></router-outlet>
+<app-header *ngIf="isNotLandingPage()"></app-header>
+<main style="font-family: Mooli, sans-serif; background-color: #efe7da;">
+  <section class="landing-page" *ngIf="!isNotLandingPage()">
+    <app-landing-page></app-landing-page>
+  </section>
+  <section class="routes" *ngIf="isNotLandingPage()">
+    <router-outlet></router-outlet>
+  </section>
 </main>
