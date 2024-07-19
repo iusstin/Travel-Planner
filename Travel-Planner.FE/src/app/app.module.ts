@@ -6,16 +6,24 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HomeComponent } from './components/home/home.component';
 import { PlaceComponent } from './components/place/place.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { TripComponent } from './components/trip/trip.component';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    PlaceComponent
+    PlaceComponent,
+    LoginComponent,
+    RegisterComponent,
+    TripComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule
   ],
   providers: [
     provideAnimationsAsync('noop')
