@@ -33,10 +33,14 @@ jobs:
             ${{ runner.os }}-node-
       
       - name: Install Dependencies
-        run: npm install
+        run: |
+          cd Travel-Planner.FE
+          npm install
 
       - name: Build Angular app
-        run: npm run build --prod
+        run: |
+          cd Travel-Planner.FE
+          npm run build --prod
           
       - name: Build And Deploy
         id: builddeploy
