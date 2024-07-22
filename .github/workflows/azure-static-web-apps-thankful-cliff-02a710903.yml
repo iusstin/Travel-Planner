@@ -34,7 +34,7 @@ jobs:
         azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_THANKFUL_CLIFF_02A710903 }}
         repo_token: ${{ secrets.GITHUB_TOKEN }}  # Used for GitHub integrations (i.e., PR comments)
         action: 'upload'
-        app_location: './Travel-Planner.FE'  # Location of your application source code
+        app_location: "./Travel-Planner.FE"  # Location of your application source code
         api_location: "./Travel-Planner.API" # Api source code path - optional
         output_location: "{angular.json#Object.values(data.projects)[0].architect.build.options.outputPath}" # Built app content directory - optional
           ###### End of Repository/Build Configurations ######
