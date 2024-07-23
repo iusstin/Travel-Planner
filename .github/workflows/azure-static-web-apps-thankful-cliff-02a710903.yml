@@ -19,6 +19,14 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: List build directory contents
+        run: |
+          cd Travel-Planner.FE/dist/travel-planner.fe
+          ls -al
+      - name: List build directory contents
+        run: |
+          cd Travel-Planner.FE/dist/travel-planner.fe/browser
+          ls -al
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
