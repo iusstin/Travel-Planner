@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '18.x'
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli@16
 
       - name: Cache Node modules
         uses: actions/cache@v3
