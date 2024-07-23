@@ -19,6 +19,24 @@ jobs:
         with:
           submodules: true
           lfs: false
+      - name: List root directory contents after checkout
+        run: ls -al
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: |
+          cd Travel-Planner.FE
+          npm install
+
+      - name: Check Angular CLI version
+        run: |
+          cd Travel-Planner.FE
+          npx ng --version
+
       - name: Build the Angular app
         run: |
           cd Travel-Planner.FE
@@ -26,8 +44,12 @@ jobs:
 
       - name: List build directory contents after build
         run: |
-          cd Travel-Planner.FE/dist
-          ls -al
+          ls -al Travel-Planner.FE/dist
+
+      - name: List specific build directory contents
+        run: |
+          ls -al Travel-Planner.FE/dist/travel-planner.fe/browser
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
