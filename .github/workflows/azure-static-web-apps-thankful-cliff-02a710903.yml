@@ -21,11 +21,11 @@ jobs:
           lfs: false
       - name: List build directory contents
         run: |
-          cd Travel-Planner.FE/dist/travel-planner.fe
+          cd Travel-Planner.FE/dist/travel-planner.fe/browser
           ls -al
       - name: List build directory contents
         run: |
-          cd Travel-Planner.FE/dist/travel-planner.fe/browser
+          cd Travel-Planner.FE/dist/travel-planner.fe
           ls -al
       - name: Build And Deploy
         id: builddeploy
