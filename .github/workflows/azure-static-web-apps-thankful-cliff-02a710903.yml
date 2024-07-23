@@ -32,11 +32,6 @@ jobs:
           cd Travel-Planner.FE
           npm install
 
-      - name: Check Angular CLI version
-        run: |
-          cd Travel-Planner.FE
-          npx ng --version
-
       - name: Build the Angular app
         run: |
           cd Travel-Planner.FE
