@@ -32,6 +32,10 @@ jobs:
           cd Travel-Planner.FE
           npm install
 
+      - name: List build directory contents before build
+        run: |
+          ls -al Travel-Planner.FE/dist
+
       - name: Build the Angular app
         run: |
           cd Travel-Planner.FE
