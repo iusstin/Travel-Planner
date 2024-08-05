@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/travel-planner.fe/browser",
+            "outputPath": "dist/travel-planner.fe",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
