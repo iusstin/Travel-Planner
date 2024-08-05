@@ -30,16 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd Travel-Planner.FE
-          npm install
-
-      - name: Build the Angular app
-        run: |
-          cd Travel-Planner.FE
-          npm run build --prod
-
-      - name: List build directory contents after build
-        run: |
-          ls -al Travel-Planner.FE/dist
+          npm install && npm run build --prod
 
       - name: List specific build directory contents
         run: |
